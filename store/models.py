@@ -24,3 +24,12 @@ class Item(models.Model):
 
     def __str__(self):
         return self.fullname
+
+
+class Banner(models.Model):
+    description = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='banner_images')
+
+    def __str__(self):
+        return self.description
+
