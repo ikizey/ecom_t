@@ -37,7 +37,7 @@ class Banner(models.Model):
 
 class Order(models.Model):
     customer = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, related_name='order'
+        get_user_model(), on_delete=models.SET_NULL, null=True, related_name='order'
     )
     ordered = models.DateField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=False, blank=False)
@@ -51,7 +51,7 @@ class OrderItem(models.Model):
         Item, on_delete=models.SET_NULL, null=True, related_name='order_item'
     )
     order = models.ForeignKey(
-        Order, on_delete=models.SET_NULL, null=True, related_name='order_item'
+        Order, on_delete=models.CASCADE, null=True, related_name='order_item'
     )
     quantity = models.IntegerField(default=0, null=False, blank=False)
 
