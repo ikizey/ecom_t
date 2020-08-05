@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 
 class Brand(models.Model):
@@ -33,6 +34,9 @@ class Item(models.Model):
     @rub_price.setter
     def set_rub_price(self, price_in_rub):
         self.price = price_in_rub * 100
+
+    def get_absolute_url(self):
+        return reverse('item', args=[str(self.id)])
 
 
 class Banner(models.Model):

@@ -6,17 +6,15 @@
 
 {% block content %}
 
+<p>{{ item.fullname }}</p>
+<p><img src="{{ item.image.url }}" width="300" height="300" /></p>
+<p>{{ item.description }}</p>
+<p>{{ item.rub_price|floatformat:2 }}&#8381;</p>
+<p>{{ item.brand.name }}</p>
+
 {% for banner in banners %}
 <p><img src="{{ banner.image.url }}" width="300" height="300" /></p>
 <p>{{ banner.description }}</p>
-{% endfor %}
-
-{% for item in items %}
-<a href="{{ item.get_absolute_url }}">
-    <p><img src="{{ item.image.url }}" width="300" height="300" /></p>
-    <p>{{ item.fullname }}</p>
-</a>
-<p>{{ item.rub_price|floatformat:2 }}&#8381;</p>
 {% endfor %}
 
 {% endblock content %}
