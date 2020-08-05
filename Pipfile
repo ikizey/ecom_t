@@ -6,9 +6,11 @@ verify_ssl = true
 [dev-packages]
 pylint = "*"
 pytype = "*"
+pylint-django = "*"
 
 [packages]
 django = "~=2.2"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
