@@ -14,7 +14,7 @@ class Item(models.Model):
     fullname = models.CharField(max_length=500)
     description = models.TextField(max_length=1000, null=True, blank=True)
     is_active = models.BooleanField(default=False)
-    price = models.IntegerField(default=0)
+    price = models.IntegerField(default=0)  # in kopeiki
     brand = models.ForeignKey(
         Brand, on_delete=models.SET_NULL, null=True, blank=True, related_name='brand'
     )
@@ -25,6 +25,14 @@ class Item(models.Model):
 
     def __str__(self):
         return self.fullname
+
+    @property
+    def rub_price(self):
+        return self.price / 100
+
+    @rub_price.setter
+    def set_rub_price(self, price_in_rub):
+        self.price = price_in_rub * 100
 
 
 class Banner(models.Model):
