@@ -6,19 +6,22 @@
 
 {% block content %}
 
-<div><a href="{% url 'cart' %}">Корзина</a></div>
+{% include 'store/banners.html' %}
 
-{% for banner in banners %}
-<p><img src="{{ banner.image.url }}" width="300" height="300" /></p>
-<p>{{ banner.description }}</p>
-{% endfor %}
+<div class="container">
+    <div class="row">
 
-{% for item in items %}
-<a href="{{ item.get_absolute_url }}">
-    <p><img src="{{ item.image.url }}" width="300" height="300" /></p>
-    <p>{{ item.fullname }}</p>
-</a>
-<p>{{ item.rub_price|floatformat:2 }}&#8381;</p>
-{% endfor %}
+        {% for item in items %}
+        <div class="card col-sm-4 border-primary">
+            <a href="{{ item.get_absolute_url }}">
+                <div class="card-header">{{ item.fullname }}</div>
+                <img class="card-img-top" src="{{ item.image.url }}" width="300" height="300" />
+                <div class="card-body">{{ item.rub_price|floatformat:2 }}&#8381;</div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
 
 {% endblock content %}
