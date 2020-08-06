@@ -12,6 +12,10 @@
 <p>{{ item.rub_price|floatformat:2 }}&#8381;</p>
 <p>{{ item.brand.name }}</p>
 
+<form action="{% url 'add_to_cart' item.id %}" method="POST">{% csrf_token %}
+    <button>В корзину</button>
+</form>
+
 {% for banner in banners %}
 <p><img src="{{ banner.image.url }}" width="300" height="300" /></p>
 <p>{{ banner.description }}</p>
