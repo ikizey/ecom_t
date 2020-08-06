@@ -41,4 +41,15 @@ def add_to_cart(request, item_pk):
 
 
 def cart(request):
-    return render(request, 'store/cart.html')
+    user = request.user
+    if user.is_anonymous:
+        return redirect('login')
+
+    template = 'store/cart.html'
+
+    order, _ = Order.objects.get_or_create(customer=user, complete=False)
+    items = order.order_item.all()
+    print(items)
+    context = {'items': items}
+
+    return render(request, template, context)

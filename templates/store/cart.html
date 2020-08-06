@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Your Cart{% endblock title %}
+
+{% block title %}Ваша корзина{% endblock title %}
+
 {% block content %}
-<h3>Cart</h3>
+
+<h3>Корзина</h3>
+
+{% for item in items %}
+<p><img src="{{ item.item.image.url }}" width="300" height="300" /></p>
+<p>{{ item.item.fullname }}</p>
+<p>{{ item.item.rub_price|floatformat:2 }}&#8381;</p>
+{% endfor %}
+
 {% endblock content %}

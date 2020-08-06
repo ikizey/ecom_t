@@ -68,5 +68,5 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=False, blank=False)
 
     def __str__(self):
-        return f"{self.item.name} in order {str(self.order.id)}"
+        return f"{self.item.fullname} in order {str(self.order.id)}"
 

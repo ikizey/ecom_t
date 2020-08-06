@@ -2,9 +2,11 @@
 
 {% load static %}
 
-{% block title %}Store{% endblock title %}
+{% block title %}Магазин Ecom{% endblock title %}
 
 {% block content %}
+
+<div><a href="{% url 'cart' %}">Корзина</a></div>
 
 {% for banner in banners %}
 <p><img src="{{ banner.image.url }}" width="300" height="300" /></p>
