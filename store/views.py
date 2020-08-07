@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+from django.views.generic.base import TemplateView
+
 from .models import Banner, Item, Order, OrderItem
 
 
@@ -6,23 +8,38 @@ def get_banners():
     return Banner.objects.all()
 
 
-def store(request):
-    template = 'store/store.html'
+class HomePageView(TemplateView):
+    template_name = 'store/store.html'
 
-    banners = get_banners()
-    items = Item.objects.filter(is_active=True)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['banners'] = get_banners()
+        context['items'] = Item.objects.filter(is_active=True)
+        return context
 
-    context = {'banners': banners, 'items': items}
-    return render(request, template, context)
+
+class ItemPageView(TemplateView):
+    template_name = 'store/item.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['banners'] = get_banners()
+        context['item'] = Item.objects.get(pk=kwargs['pk'], is_active=True)
+        return context
 
 
-def item(request, pk):
-    template = 'store/item.html'
+def cart(request):
+    user = request.user
+    if user.is_anonymous:
+        return redirect('login')
 
-    banners = get_banners()
-    item = Item.objects.get(pk=pk, is_active=True)
+    template = 'store/cart.html'
 
-    context = {'banners': banners, 'item': item}
+    order, _ = Order.objects.get_or_create(customer=user, complete=False)
+    items = order.order_item.all()
+
+    context = {'items': items}
+
     return render(request, template, context)
 
 
@@ -38,18 +55,3 @@ def add_to_cart(request, item_pk):
     order_item.save()
 
     return redirect('item', item_pk)
-
-
-def cart(request):
-    user = request.user
-    if user.is_anonymous:
-        return redirect('login')
-
-    template = 'store/cart.html'
-
-    order, _ = Order.objects.get_or_create(customer=user, complete=False)
-    items = order.order_item.all()
-    print(items)
-    context = {'items': items}
-
-    return render(request, template, context)
