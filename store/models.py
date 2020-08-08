@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.urls import reverse
 
 
@@ -49,7 +49,10 @@ class Banner(models.Model):
 
 class Order(models.Model):
     customer = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True, related_name='order'
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='order',
     )
     ordered = models.DateField(auto_now_add=True)
     complete = models.BooleanField(default=False, null=False, blank=False)
