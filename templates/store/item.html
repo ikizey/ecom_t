@@ -11,8 +11,8 @@
         <div class="card col-md-9 border-primary">
             <div class="card-header border-primary bg-transparent">{{ item.fullname }}</div>
             <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="{{ item.image.url }}" width="300" height="300" />
+                <div class="col-md-3">
+                    <img class="mt-5 ml-4" src="{{ item.image.url }}" width="160" height="212" />
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -24,7 +24,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-12 mb-4 card-footer border-primary bg-transparent">{{ item.brand.name }}</div>
+                <div class="col-md-12 mb-4 card-footer border-primary bg-transparent">Brand: {{ item.brand.name }}</div>
             </div>
 
         </div>
