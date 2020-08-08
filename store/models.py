@@ -24,7 +24,7 @@ class Item(models.Model):
     )
 
     image = models.ImageField(
-        default='item_images/default.jpg', upload_to='items_images'
+        default='items_images/default.jpg', upload_to='items_images'
     )
 
     def __str__(self):
