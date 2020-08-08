@@ -1,0 +1,21 @@
+username: admin
+password: storepassword
+
+username: Анна_Борисовна
+password: annaborisovna
+
+username: Юлия_Ярославовна
+password: juliayaroslavovna
+
+
+username: user_G
+email: user_g@gmail.com
+password: _us1_A_9er
+
+username: user_N
+email: user_n@mail.ru
+password: _er1_Z_9us
+
+username: MrX
+email: VladimirXavier@example.com
+password: parolvsexparol
