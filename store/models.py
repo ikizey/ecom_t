@@ -4,6 +4,8 @@ from django.urls import reverse
 
 
 class Brand(models.Model):
+    """Brand field for items(products)"""
+
     name = models.CharField(max_length=300)
 
     def __str__(self):
@@ -11,11 +13,12 @@ class Brand(models.Model):
 
 
 class Item(models.Model):
+    """Product model"""
 
     fullname = models.CharField(max_length=500)
     description = models.TextField(max_length=1000, null=True, blank=True)
     is_active = models.BooleanField(default=False)
-    price = models.IntegerField(default=0)  # in kopeiki
+    price = models.IntegerField(default=0)  # в копейках
     brand = models.ForeignKey(
         Brand, on_delete=models.SET_NULL, null=True, blank=True, related_name='brand'
     )
@@ -27,6 +30,7 @@ class Item(models.Model):
     def __str__(self):
         return self.fullname
 
+    # returns price in rubles
     @property
     def rub_price(self):
         return self.price / 100
@@ -40,6 +44,8 @@ class Item(models.Model):
 
 
 class Banner(models.Model):
+    """Banners for pages"""
+
     description = models.CharField(max_length=100)
     image = models.ImageField(upload_to='banner_images')
 
@@ -48,6 +54,8 @@ class Banner(models.Model):
 
 
 class Order(models.Model):
+    """Customer Orders"""
+
     customer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -62,6 +70,8 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """Model for items in orders"""
+
     item = models.ForeignKey(
         Item, on_delete=models.SET_NULL, null=True, related_name='order_item'
     )
