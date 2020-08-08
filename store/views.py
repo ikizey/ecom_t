@@ -28,8 +28,8 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         """ Provides context data for template:
-        All active products. -> Item.objects.filter(is_active=True)
-        Also banners. -> get_banners()
+        items: All active products.
+        banners : Banners.
         """
         context = super().get_context_data(**kwargs)
         context['banners'] = get_banners()
@@ -44,12 +44,16 @@ class ItemPageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         """ Provides context data for template:
-        All data about current product. -> Item.objects.get(pk=kwargs['pk'], is_active=True)
-        Also banners. -> get_banners()
+        item : Data about current product.
+        banners : Banners.
         """
         context = super().get_context_data(**kwargs)
         context['banners'] = get_banners()
-        context['item'] = Item.objects.get(pk=kwargs['pk'], is_active=True)
+        try:
+            context['item'] = Item.objects.get(pk=kwargs['pk'], is_active=True)
+        except Item.DoesNotExist:
+            # meaning product was deleted or set inactive while user was on the page.
+            return redirect('home')
         return context
 
 
@@ -63,9 +67,9 @@ def cart(request):
     template = 'store/cart.html'
 
     # Context data for template:
-    # All ordered items of current user.
-    # Creates new order if non complete order not exists.
+    # Creates new order if non-complete order not exists.
     order, _ = Order.objects.get_or_create(customer=user, complete=False)
+    # grab all items from order
     items = order.order_item.all()
 
     context = {'items': items}
@@ -89,11 +93,11 @@ def add_to_cart(request, item_pk):
     try:
         product = Item.objects.get(pk=item_pk, is_active=True)
     except Item.DoesNotExist:
-        # meaning product was deleteed while user was on product page.
+        # meaning product was deleted  or set inactive while user was on product page.
         # so can't sand back to it's page
         return redirect('home')
     order, _ = Order.objects.get_or_create(customer=user, complete=False)
-    order_item, _ = OrderItem.objects.get_or_create(order=order, item=product)
+    order_item = OrderItem.objects.create(order=order, item=product)
 
     order_item.save()
 
