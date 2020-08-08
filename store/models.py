@@ -1,5 +1,5 @@
-from django.db import models
 from django.conf import settings
+from django.db import models
 from django.urls import reverse
 
 
@@ -72,4 +72,3 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.item.fullname} in order {str(self.order.id)}"
-

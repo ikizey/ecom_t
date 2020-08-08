@@ -99,8 +99,8 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'users.ExtendedUser'
 
 # Login urls:
-LOGIN_REDIRECT_URL = ''
-LOGOUT_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
