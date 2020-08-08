@@ -1,0 +1,26 @@
+[
+    {
+        "model": "store.banner",
+        "pk": 1,
+        "fields": {
+            "description": "Nokia",
+            "image": "banner_images/nokia.jpeg"
+        }
+    },
+    {
+        "model": "store.banner",
+        "pk": 2,
+        "fields": {
+            "description": "Google",
+            "image": "banner_images/google.jpeg"
+        }
+    },
+    {
+        "model": "store.banner",
+        "pk": 3,
+        "fields": {
+            "description": "Microsoft",
+            "image": "banner_images/microsoft.jpeg"
+        }
+    }
+]

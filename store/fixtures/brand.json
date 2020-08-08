@@ -1,0 +1,23 @@
+[
+    {
+        "model": "store.brand",
+        "pk": 1,
+        "fields": {
+            "name": "Apple"
+        }
+    },
+    {
+        "model": "store.brand",
+        "pk": 2,
+        "fields": {
+            "name": "Google"
+        }
+    },
+    {
+        "model": "store.brand",
+        "pk": 3,
+        "fields": {
+            "name": "Microsoft"
+        }
+    }
+]

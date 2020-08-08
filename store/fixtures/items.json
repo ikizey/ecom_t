@@ -1,0 +1,134 @@
+[
+    {
+        "model": "store.item",
+        "pk": 1,
+        "fields": {
+            "fullname": "Apple iPhone X",
+            "description": "iPhone X features an all-screen design with a 5.8-inch Super Retina HD display with HDR and True Tone. Designed with the most durable glass ever in a smartphone and a surgical-grade stainless steel band. Charges wirelessly (charging mat sold separately). Face ID lets you unlock and use Apple Pay with just a glance. Supports augmented reality experiences in games and apps. With iPhone X, the next era of iPhone has begun.",
+            "is_active": true,
+            "price": 4058959,
+            "brand": 1,
+            "image": "items_images/apple-iphone-x.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 2,
+        "fields": {
+            "fullname": "Google Pixel 4",
+            "description": "The Google Pixel 4 comes with a 90Hz 5.7\" OLED display, a dual camera, a Snapdragon 855 chipset, 6GB of RAM, 64GB of storage, a 2800mAh battery, a dual-camera (wide + telephoto), and availability across all major US carriers. It has no fingerprint sensor save for a radar-powered face unlock method. You can also control certain apps and functions of the devices with simple gestures in front of the radar sensor.",
+            "is_active": true,
+            "price": 4988955,
+            "brand": 2,
+            "image": "items_images/google-pixel-4.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 3,
+        "fields": {
+            "fullname": "Microsoft Lumia 650",
+            "description": "Microsoft Lumia 650 supports frequency bands GSM , HSPA , LTE. Official announcement date is February 2016. The device is working on an Microsoft Windows 10 with a Quad-core 1.3 GHz Cortex-A7 processor and 1 GB RAM memory. Microsoft Lumia 650 has 16 GB of internal memory. This device has a Qualcomm Snapdragon 212 chipset. The main screen size is 5.0 inches with 720 x 1280 pixels resolution.",
+            "is_active": true,
+            "price": 1303734,
+            "brand": 3,
+            "image": "items_images/microsoft-lumia-650-s.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 4,
+        "fields": {
+            "fullname": "Nokia 8110 4G",
+            "description": "The return of the icon. Much like the original, the new Nokia 8110 4G has a curved protective cover you can slide open to pick up calls and slide back to end them. The unique shape also means you can spin the phone in ways you never imagined.",
+            "is_active": true,
+            "price": 451961,
+            "brand": null,
+            "image": "items_images/nokia88104g.jpeg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 5,
+        "fields": {
+            "fullname": "Xiaomi Redmi 9",
+            "description": "",
+            "is_active": true,
+            "price": 956072,
+            "brand": null,
+            "image": "items_images/xiaomi-redmi-9.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 6,
+        "fields": {
+            "fullname": "OnePlus 8 Pro",
+            "description": "",
+            "is_active": true,
+            "price": 7518199,
+            "brand": null,
+            "image": "items_images/oneplus-8-pro.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 7,
+        "fields": {
+            "fullname": "Samsung Galaxy M31",
+            "description": "",
+            "is_active": true,
+            "price": 2277189,
+            "brand": null,
+            "image": "items_images/samsung-galaxy-m31-sm-m315f.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 8,
+        "fields": {
+            "fullname": "Sony Xperia 1 II",
+            "description": "",
+            "is_active": true,
+            "price": 10151742,
+            "brand": null,
+            "image": "items_images/sony-xperia-1-II-o.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 9,
+        "fields": {
+            "fullname": "Honor X10 Max 5G",
+            "description": "",
+            "is_active": true,
+            "price": 2085974,
+            "brand": null,
+            "image": "items_images/honor-x10-max.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 10,
+        "fields": {
+            "fullname": "Motorola Moto G 5G Plus",
+            "description": "",
+            "is_active": true,
+            "price": 3476624,
+            "brand": null,
+            "image": "items_images/motorola-moto-g-5g-plus.jpg"
+        }
+    },
+    {
+        "model": "store.item",
+        "pk": 11,
+        "fields": {
+            "fullname": "LG Stylo 6",
+            "description": "",
+            "is_active": true,
+            "price": 1738312,
+            "brand": null,
+            "image": "items_images/lg-stylo6.jpg"
+        }
+    }
+]
