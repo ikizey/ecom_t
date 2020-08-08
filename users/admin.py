@@ -9,7 +9,7 @@ class ExtendedUserAdmin(UserAdmin):
     add_form = ExtendedUserCreationForm
     form = ExtendedUserChangeForm
     model = ExtendedUser
-    list_display = ['username', 'is_staff', 'email']
+    list_display = ['username', 'email', 'manager', 'is_active', 'is_superuser']
 
 
 admin.site.register(ExtendedUser, ExtendedUserAdmin)

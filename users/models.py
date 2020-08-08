@@ -3,10 +3,7 @@ from django.db import models
 
 
 class ExtendedUser(AbstractUser):
-    is_manager = models.BooleanField(
-        ('manager status'),
-        default=False,
-        help_text=('Designates whether the user is manager'),
-    )
-
-    USERNAME_FIELD = 'username'
+    @property
+    def manager(self):
+        """wraps staff field into 'manager' (for admin view)"""
+        return self.is_staff
