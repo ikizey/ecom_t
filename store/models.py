@@ -54,7 +54,9 @@ class Banner(models.Model):
 
 
 class Order(models.Model):
-    """Customer Orders"""
+    """Customer Orders
+    Non-complete order is cart, otherwise some past order.
+    """
 
     customer = models.ForeignKey(
         settings.AUTH_USER_MODEL,

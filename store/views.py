@@ -67,10 +67,10 @@ def cart(request):
     template = 'store/cart.html'
 
     # Context data for template:
-    # Creates new order if non-complete order not exists.
-    order, _ = Order.objects.get_or_create(customer=user, complete=False)
+    # Creates new cart(order) if non-complete order does not exist.
+    cart, _ = Order.objects.get_or_create(customer=user, complete=False)
     # grab all items from order
-    items = order.order_item.all()
+    items = cart.order_item.all()
 
     context = {'items': items}
 
@@ -80,7 +80,7 @@ def cart(request):
 def add_to_cart(request, item_pk):
     """Add to card view.
     ! Never shown to user ! Redirects to product page with pk=item_pk
-    Used to save products(items) to cart of current user
+    Used to save products(items) to cart(order) of current user
     """
     user = request.user
     # Do no save data for  anonymous users
@@ -96,10 +96,31 @@ def add_to_cart(request, item_pk):
         # meaning product was deleted  or set inactive while user was on product page.
         # so can't sand back to it's page
         return redirect('home')
-    order, _ = Order.objects.get_or_create(customer=user, complete=False)
-    order_item = OrderItem.objects.create(order=order, item=product)
+    cart, _ = Order.objects.get_or_create(customer=user, complete=False)
+    order_item = OrderItem.objects.create(order=cart, item=product)
 
     order_item.save()
 
     # Redirect to product page with pk=item_pk
     return redirect('item', item_pk)
+
+
+def del_from_cart(request, order_item_pk):
+    """Remove to card view.
+    ! Never shown to user ! Redirects to cart
+    Used to delete product(item) from cart(order) of current user
+    """
+    user = request.user
+    if user.is_authenticated:
+        try:
+            product = OrderItem.objects.get(pk=order_item_pk)
+        except Item.DoesNotExist:
+            # if prevously deleted. in another tab, for example
+            pass
+        else:
+            # check if item belongs to user's order
+            if product.order.customer == user:
+                product.delete()
+
+    return redirect('cart')
+

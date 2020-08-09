@@ -13,6 +13,9 @@
                 <div class="card-header">{{ item.item.fullname }}</div>
                 <img class="card-img-top" src="{{ item.item.image.url }}" width="300" height="300" />
                 <div class="card-body">{{ item.item.rub_price|floatformat:2 }}&#8381;</div>
+                <form action="{% url 'del_from_cart' item.id %}" method="POST">{% csrf_token %}
+                    <button class="btn mt-1 mb-1 btn-outline-danger">Убрать</button>
+                </form>
             </a>
         </div>
         {% endfor %}
