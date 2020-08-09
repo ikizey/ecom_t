@@ -24,7 +24,15 @@
                     </div>
 
                 </div>
-                <div class="col-md-12 mb-4 card-footer border-primary bg-transparent">Brand: {{ item.brand.name }}</div>
+
+                <div class="col-md-12 mb-4 card-footer border-primary bg-transparent">
+                    {% if item.brand %}Brand:
+                    {{ item.brand.name }}
+                    {% else %}
+                    <p class="mb-4"></p>
+                    {% endif %}
+                </div>
+
             </div>
 
         </div>
