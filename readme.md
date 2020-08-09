@@ -10,7 +10,7 @@
 `python manage.py migrate store`<br>
 `python manage.py migrate`<br>
 `python manage.py loaddata store/fixtures/banners.json`<br>
-`python manage.py loaddata store/fixtures/brands.json`<br>
+`python manage.py loaddata store/fixtures/brand.json`<br>
 `python manage.py loaddata store/fixtures/items.json`<br>
 `python manage.py loaddata users/fixtures/users.json`<br>
 
