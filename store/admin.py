@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from .models import Banner, Brand, Item, Order
 
@@ -28,6 +29,11 @@ class ManagerAdminMixin:
 class BannerAdmin(ManagerAdminMixin, admin.ModelAdmin):
     search_fields = ['description']
 
+    def banner_image(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}"')
+
+    readonly_fields = ('banner_image',)
+
 
 @admin.register(Brand)
 class BrandAdmin(ManagerAdminMixin, admin.ModelAdmin):
@@ -39,6 +45,11 @@ class ItemAdmin(ManagerAdminMixin, admin.ModelAdmin):
     list_display = ('fullname', 'is_active', 'rub_price', 'brand')
     list_filter = ('is_active', 'brand')
     search_fields = ['fullname']
+
+    def item_image(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}" width="160" height="212"')
+
+    readonly_fields = ('item_image',)
 
 
 admin.site.register(Order)
