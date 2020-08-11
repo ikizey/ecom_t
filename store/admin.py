@@ -7,7 +7,7 @@ class ManagerAdminMixin:
     """Gives permission to manager users"""
 
     def check_perm(self, user):
-        if user.is_superuser or user.manager:
+        if user.is_superuser or user.is_staff:
             return True
         return False
 
